@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,10 +32,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en" suppressHydrationWarning
       className={`${inter.className} h-full antialiased`}
     >
+      <ThemeProvider attribute="class" enableSystem defaultTheme="system">
       <body className="min-h-full flex flex-col">{children}</body>
+      </ThemeProvider>
     </html>
   );
 }
